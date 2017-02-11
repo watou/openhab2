@@ -23,6 +23,7 @@ Import-Package: com.google.common.collect,
  org.apache.commons.logging,
  org.eclipse.jetty.http,
  org.eclipse.smarthome.config.core,
+ org.eclipse.smarthome.config.discovery,
  org.eclipse.smarthome.core.library.types,
  org.eclipse.smarthome.core.thing,
  org.eclipse.smarthome.core.thing.binding,
@@ -41,5 +42,3 @@ Export-Package: org.openhab.binding.nest,
  org.openhab.binding.nest.internal,
  org.openhab.binding.nest.internal.data,
  org.openhab.binding.nest.discovery
-Require-Bundle: org.eclipse.smarthome.config.discovery,
- com.google.gson
