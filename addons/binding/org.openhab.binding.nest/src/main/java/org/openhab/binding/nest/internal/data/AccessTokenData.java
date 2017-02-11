@@ -2,6 +2,11 @@ package org.openhab.binding.nest.internal.data;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Deals with the access token data that comes back from nest when it is requested.
+ *
+ * @author David Bennett - Initial Contribution
+ */
 public class AccessTokenData {
     public String getAccessToken() {
         return accessToken;

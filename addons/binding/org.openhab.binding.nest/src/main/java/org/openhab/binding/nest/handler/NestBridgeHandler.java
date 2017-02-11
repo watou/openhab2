@@ -38,6 +38,13 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+/**
+ * This bridge handler connects to nest and handles all the api requests. It pulls down the
+ * updated data, polls the system and does all the co-ordination with the other handlers
+ * to get the data updated to the correct things.
+ *
+ * @author David Bennett - initial contribution
+ */
 public class NestBridgeHandler extends BaseBridgeHandler {
 
     private Logger logger = LoggerFactory.getLogger(NestBridgeHandler.class);

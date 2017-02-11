@@ -18,6 +18,10 @@
 			<channel id="smoke_alarm_state" typeId="alarmstate" />
 			<channel id="manual_test_active" typeId="switch" />
 		</channels>
+
+        <properties>
+            <property name="vendor">Nest</property>
+        </properties>
 	</thing-type>
 
 	<channel-type id="uicolorstate">

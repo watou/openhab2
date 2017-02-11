@@ -26,16 +26,16 @@ public class NestBindingConstants {
     public final static String NEST_ACCESS_TOKEN_URL = "https://api.home.nest.com/oauth2/access_token";
 
     /** The url to get set values on the thermostat when talking to nest. */
-    public final static String NEST_THERMOSTAT_UPDATE_URL = "https://developer-api.nest.com/devices/thermostats/";
+    public final static String NEST_THERMOSTAT_UPDATE_URL = NEST_URL + "/devices/thermostats/";
 
     /** The url to get set values on the structure when talking to nest. */
-    public static final Object NEST_STRUCTURE_UPDATE_URL = "https://developer-api.nest.com/structures/";
+    public static final Object NEST_STRUCTURE_UPDATE_URL = NEST_URL + "/structures/";
 
     /** The url to get set values on the camera when talking to nest. */
-    public final static String NEST_CAMERA_UPDATE_URL = "https://developer-api.nest.com/devices/camera/";
+    public final static String NEST_CAMERA_UPDATE_URL = NEST_URL + "/devices/camera/";
 
     /** The url to get set values on the camera when talking to nest. */
-    public final static String NEST_SMOKE_ALARM_UPDATE_URL = "https://developer-api.nest.com/devices/smoke_co_alarms/";
+    public final static String NEST_SMOKE_ALARM_UPDATE_URL = NEST_URL + "/devices/smoke_co_alarms/";
 
     // List of all Thing Type UIDs
     public final static ThingTypeUID THING_TYPE_THERMOSTAT = new ThingTypeUID(BINDING_ID, "thermostat");

@@ -2,24 +2,40 @@
 <thing:thing-descriptions bindingId="nest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
 	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
-	
+
 	<thing-type id="structure" listed="false">
-        <supported-bridge-type-refs>
-            <bridge-type-ref id="bridge" />
-        </supported-bridge-type-refs>
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="bridge" />
+		</supported-bridge-type-refs>
 
 		<label>Nest Structure</label>
 		<description>The details about the nest structures</description>
 
 		<channels>
-			<channel id="home_away" typeId="text" />
-			<channel id="video_history_enabled" typeId="switch" />
-			<channel id="streaming" typeId="switch" />
-			<channel id="web_url" typeId="string" />
-			<channel id="app_url" typeId="string" />
-			<channel id="public_share_enabled" typeId="switch" />
-			<channel id="public_share_url" typeId="string" />
-			<channel id="snapshot_url" typeId="string" />
+			<channel id="country_code" typeId="text" />
+			<channel id="postal_code" typeId="text" />
+			<channel id="peak_period_start_time" typeId="date" />
+			<channel id="peak_period_end_time" typeId="date" />
+			<channel id="time_zone" typeId="text" />
+			<channel id="eta_begin" typeId="date" />
+			<channel id="rush_hour_rewards_enrollment" typeId="switch" />
+			<channel id="away" typeId="away" />
 		</channels>
+
+		<properties>
+			<property name="vendor">Nest</property>
+		</properties>
 	</thing-type>
+
+	<channel-type id="away">
+		<label>Away</label>
+		<description>Away state of the structure</description>
+		<state>
+			<options>
+				<option value="away">Away</option>
+				<option value="home">Home</option>
+				<option value="autoaway">Auto Away</option>
+			</options>
+		</state>
+	</channel-type>
 </thing:thing-descriptions>

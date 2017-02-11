@@ -1,5 +1,10 @@
 package org.openhab.binding.nest.config;
 
+/**
+ * This has the configuration for the nest bridge, allowing it to talk to nest.
+ *
+ * @author David Bennett - initial contribution
+ */
 public class NestBridgeConfiguration {
     /** Client id from the nest product page. */
     public String clientId;

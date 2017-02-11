@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * Contains the data needed to do an update request back to nest.
  *
- * @author David Bennett
+ * @author David Bennett - Initial Contribution
  */
 public class NestUpdateRequest {
     public String getUpdateUrl() {

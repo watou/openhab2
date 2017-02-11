@@ -21,6 +21,12 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Sets;
 
+/**
+ * This service connects to the nest bridge and creates the correct discovery results for nest devices
+ * as they are found through the API.
+ *
+ * @author David Bennett - initial contribution
+ */
 public class NestDiscoveryService extends AbstractDiscoveryService implements NestDeviceAddedListener {
     private final Logger logger = LoggerFactory.getLogger(NestDiscoveryService.class);
     private NestBridgeHandler bridge;

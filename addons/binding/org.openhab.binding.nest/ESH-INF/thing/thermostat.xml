@@ -22,9 +22,9 @@
 			<channel id="can_cool" typeId="readonlyswitch" />
 			<channel id="has_fan" typeId="readonlyswitch" />
 			<channel id="has_leaf" typeId="readonlyswitch" />
-			<channel id="sunlight_correction_enabled" typeId="readonlyswitch" />
-			<channel id="sunlight_correction_active" typeId="readonlyswitch" />
-			<channel id="using_emergency_heat" typeId="readonlyswitch" />
+			<channel id="sunlight_correction_enabled" typeId="readonlyswitch" advanced="true" />
+			<channel id="sunlight_correction_active" typeId="readonlyswitch" advanced="true"  />
+			<channel id="using_emergency_heat" typeId="readonlyswitch" advanced="true"  />
 			<channel id="locked" typeId="readonlyswitch" />
 			<channel id="locked_max_set_point" typeId="setpoint" />
 			<channel id="locked_min_set_point" typeId="setpoint" />

@@ -10,6 +10,8 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * The structure details from nest.
+ *
+ * @author David Bennett - Initial Contribution
  */
 public class Structure {
     public HomeAwayState getAway() {
@@ -182,6 +184,7 @@ public class Structure {
     public enum HomeAwayState {
         home,
         away,
+        autoaway,
         unknown
     }
 }

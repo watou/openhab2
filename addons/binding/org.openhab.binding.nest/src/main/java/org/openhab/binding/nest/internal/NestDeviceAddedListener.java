@@ -8,7 +8,7 @@ import org.openhab.binding.nest.internal.data.Thermostat;
 /**
  * Used by the discovery service to track when devices are added.
  *
- * @author David Bennett
+ * @author David Bennett - Initial Contribution
  */
 public interface NestDeviceAddedListener {
 

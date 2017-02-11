@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * The {@link NestThermostatHandler} is responsible for handling commands, which are
- * sent to one of the channels.
+ * sent to one of the channels for the thermostat.
  *
  * @author David Bennett - Initial contribution
  */

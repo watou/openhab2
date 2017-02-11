@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * All the nest devices broken up by type.
  *
- * @author David Bennett
+ * @author David Bennett - Initial Contribution
  */
 public class NestDevices {
     @SerializedName("thermostats")
