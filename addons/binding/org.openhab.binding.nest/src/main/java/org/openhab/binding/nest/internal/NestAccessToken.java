@@ -19,7 +19,7 @@ import com.google.gson.GsonBuilder;
 /**
  * Keeps track of the access token, refreshing it if needed.
  *
- * @author David Bennett
+ * @author David Bennett - Initial contribution
  */
 public class NestAccessToken {
     private Logger logger = LoggerFactory.getLogger(NestAccessToken.class);

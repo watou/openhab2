@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Data for the nest smoke detector.
  *
- * @author David Bennett
+ * @author David Bennett - Initial Contribution
  *
  */
 public class SmokeDetector extends BaseNestDevice {

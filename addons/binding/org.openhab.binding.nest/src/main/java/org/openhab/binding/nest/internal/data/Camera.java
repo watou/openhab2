@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * The data for the camera.
  *
- * @author David Bennett
+ * @author David Bennett - Initial Contribution
  */
 public class Camera extends BaseNestDevice {
     private boolean isStreaming;

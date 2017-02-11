@@ -13,6 +13,12 @@ import org.openhab.binding.nest.internal.data.Camera;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Handles all the updates to the camera as well as handling the commands that send
+ * updates to nest.
+ *
+ * @author David Bennett - initial contribution
+ */
 public class NestCameraHandler extends BaseNestHandler {
 
     private Logger logger = LoggerFactory.getLogger(NestCameraHandler.class);

@@ -19,7 +19,11 @@ import org.openhab.binding.nest.internal.data.Structure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/** Deals with the structures on the nest api, turning them into a thing in openhab. */
+/**
+ * Deals with the structures on the nest api, turning them into a thing in openhab.
+ *
+ * @author David Bennett - initial contribution
+ */
 public class NestStructureHandler extends BaseNestHandler {
     private Logger logger = LoggerFactory.getLogger(NestStructureHandler.class);
     private Structure lastData;

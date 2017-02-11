@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Gson class to encapsulate the data for the nest thermostat.
  *
- * @author David Bennett
+ * @author David Bennett - Initial Contribution
  */
 public class Thermostat extends BaseNestDevice {
     public String getTempScale() {
