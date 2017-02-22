@@ -36,7 +36,7 @@ public class NestStructureHandler extends BaseNestHandler {
     private Logger logger = LoggerFactory.getLogger(NestStructureHandler.class);
     private Structure lastData;
 
-    NestStructureHandler(Thing thing) {
+    public NestStructureHandler(Thing thing) {
         super(thing);
     }
 

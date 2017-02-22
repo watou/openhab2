@@ -2,28 +2,65 @@
 <thing:thing-descriptions bindingId="nest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
 	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
-	
+
 	<thing-type id="camera" listed="false">
-        <supported-bridge-type-refs>
-            <bridge-type-ref id="bridge" />
-        </supported-bridge-type-refs>
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="bridge" />
+		</supported-bridge-type-refs>
 
 		<label>Nest Cam</label>
 		<description>Provides the nestcam layer to talk to nest</description>
 
 		<channels>
-			<channel id="audio_input_enabled" typeId="Switch" />
-			<channel id="video_history_enabled" typeId="Switch" />
-			<channel id="streaming" typeId="Switch" />
-			<channel id="web_url" typeId="String" />
-			<channel id="app_url" typeId="String" />
-			<channel id="public_share_enabled" typeId="Switch" />
-			<channel id="public_share_url" typeId="String" />
-			<channel id="snapshot_url" typeId="String" />
+			<channel id="audio_input_enabled" typeId="Switch">
+				<label>Audio Input Enabled</label>
+				<description>If the audio input is currently enabled.</description>
+			</channel>
+			<channel id="video_history_enabled" typeId="Switch" >
+                <label>Video History Enabled</label>
+                <description>If the video history is currently enabled.</description>
+            </channel>
+			<channel id="streaming" typeId="Switch" >
+                <label>Streaming</label>
+                <description>If the camera is currently streaming.</description>
+            </channel>
+			<channel id="web_url" typeId="String" >
+                <label>Web URL</label>
+                <description>The web url to see the camera.</description>
+            </channel>
+			<channel id="app_url" typeId="String" >
+                <label>App URL</label>
+                <description>The app url to see the camera.</description>
+            </channel>
+			<channel id="public_share_enabled" typeId="Switch" >
+                <label>Public Share Enabled</label>
+                <description>If public sharing is currently enabled.</description>
+            </channel>
+			<channel id="public_share_url" typeId="String" >
+                <label>Public share URL</label>
+                <description>The url to see the public share of the camera.</description>
+            </channel>
+			<channel id="snapshot_url" typeId="String" >
+                <label>Snapshot url</label>
+                <description>The url to use for a snapshot of the video stream.</description>
+            </channel>
 		</channels>
 
-        <properties>
-            <property name="vendor">Nest</property>
-        </properties>
+		<properties>
+			<property name="vendor">Nest</property>
+		</properties>
 	</thing-type>
+
+	<channel-type id="Switch">
+		<item-type>Switch</item-type>
+		<label>Switch</label>
+		<description>Switch</description>
+	</channel-type>
+
+	<channel-type id="String">
+		<item-type>String</item-type>
+		<label>String</label>
+		<description>String</description>
+	</channel-type>
+
 </thing:thing-descriptions>

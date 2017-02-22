@@ -25,6 +25,7 @@ import org.eclipse.smarthome.core.thing.binding.ThingHandler;
 import org.openhab.binding.nest.discovery.NestDiscoveryService;
 import org.openhab.binding.nest.handler.NestBridgeHandler;
 import org.openhab.binding.nest.handler.NestCameraHandler;
+import org.openhab.binding.nest.handler.NestStructureHandler;
 import org.openhab.binding.nest.handler.NestThermostatHandler;
 import org.osgi.framework.ServiceRegistration;
 
@@ -60,6 +61,10 @@ public class NestHandlerFactory extends BaseThingHandlerFactory {
 
         if (thingTypeUID.equals(THING_TYPE_CAMERA)) {
             return new NestCameraHandler(thing);
+        }
+
+        if (thingTypeUID.equals(THING_TYPE_STRUCTURE)) {
+            return new NestStructureHandler(thing);
         }
 
         if (thingTypeUID.equals(THING_TYPE_BRIDGE)) {

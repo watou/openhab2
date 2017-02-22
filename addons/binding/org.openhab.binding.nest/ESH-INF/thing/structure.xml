@@ -12,13 +12,35 @@
 		<description>The details about the nest structures</description>
 
 		<channels>
-			<channel id="country_code" typeId="country_code" />
-			<channel id="postal_code" typeId="text" />
-			<channel id="peak_period_start_time" typeId="date" />
-			<channel id="peak_period_end_time" typeId="date" />
-			<channel id="time_zone" typeId="text" />
-			<channel id="eta_begin" typeId="date" />
-			<channel id="rush_hour_rewards_enrollment" typeId="switch" />
+			<channel id="country_code" typeId="text">
+				<label>Country Code</label>
+				<description>The country code for the structure</description>
+			</channel>
+			<channel id="postal_code" typeId="text">
+				<label>Postal Code</label>
+				<description>The postal code of the structure</description>
+			</channel>
+			<channel id="peak_period_start_time" typeId="date">
+				<label>Peak period start</label>
+				<description>The start of the peak period.</description>
+			</channel>
+			<channel id="peak_period_end_time" typeId="date">
+				<label>Peak period end</label>
+				<description>The end of the peak period.</description>
+			</channel>
+			<channel id="time_zone" typeId="text">
+				<label>Time Zone</label>
+				<description>The time zone for the structure.</description>
+			</channel>
+			<channel id="eta_begin" typeId="date">
+				<label>ETA</label>
+				<description>The estimated time of arrival for someone to get home.</description>
+
+			</channel>
+			<channel id="rush_hour_rewards_enrollment" typeId="rushHour">
+				<label>Rush Hour Rewards</label>
+				<description>If rush hour rewards is turned on or off.</description>
+			</channel>
 			<channel id="away" typeId="away" />
 		</channels>
 
@@ -40,10 +62,21 @@
 		</state>
 	</channel-type>
 
-	<channel-type id="country_code">
+	<channel-type id="text">
 		<item-type>String</item-type>
 		<label>Country Code</label>
 		<description>Country code of the structure</description>
+	</channel-type>
+
+	<channel-type id="date">
+		<item-type>DateTime</item-type>
+		<label>Date</label>
+	</channel-type>
+
+	<channel-type id="rushHour">
+		<item-type>Switch</item-type>
+		<label>Rush hour rewards</label>
+		<description>If rush hour rewards system is enabled or not.</description>
 	</channel-type>
 
 </thing:thing-descriptions>

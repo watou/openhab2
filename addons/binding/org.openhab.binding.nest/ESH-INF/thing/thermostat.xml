@@ -4,9 +4,9 @@
 	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
 
 	<thing-type id="thermostat" listed="false">
-        <supported-bridge-type-refs>
-            <bridge-type-ref id="bridge" />
-        </supported-bridge-type-refs>
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="bridge" />
+		</supported-bridge-type-refs>
 
 		<label>Nest Thermostat</label>
 		<description>Provides the nest thermostat layer to talk to nest</description>
@@ -15,20 +15,62 @@
 			<channel id="temperature" typeId="temperature" />
 			<channel id="humidity" typeId="humidity" />
 			<channel id="mode" typeId="mode" />
-			<channel id="previous_mode" typeId="mode" />
-			<channel id="max_set_point" typeId="setpoint" />
-			<channel id="min_set_point" typeId="setpoint" />
-			<channel id="can_heat" typeId="readonlyswitch" />
-			<channel id="can_cool" typeId="readonlyswitch" />
-			<channel id="has_fan" typeId="readonlyswitch" />
-			<channel id="has_leaf" typeId="readonlyswitch" />
-			<channel id="sunlight_correction_enabled" typeId="readonlyswitch" />
-			<channel id="sunlight_correction_active" typeId="readonlyswitch"  />
-			<channel id="using_emergency_heat" typeId="readonlyswitch" />
-			<channel id="locked" typeId="readonlyswitch" />
-			<channel id="locked_max_set_point" typeId="setpoint" />
-			<channel id="locked_min_set_point" typeId="setpoint" />
-			<channel id="time_to_target_mins" typeId="timeToTarget" />
+			<channel id="previous_mode" typeId="mode">
+				<label>Previous Mode</label>
+				<description>The previous mode the thermostat was in</description>
+			</channel>
+			<channel id="max_set_point" typeId="setpoint">
+				<label>Max set point</label>
+				<description>Max set point in celcius</description>
+			</channel>
+			<channel id="min_set_point" typeId="setpoint">
+				<label>Min set point</label>
+				<description>Min set point in celcius</description>
+			</channel>
+			<channel id="can_heat" typeId="readonlyswitch">
+				<label>Can Heat</label>
+				<description>If the system can heat.</description>
+			</channel>
+			<channel id="can_cool" typeId="readonlyswitch">
+				<label>Can Cool</label>
+				<description>If the system can cool.</description>
+			</channel>
+			<channel id="has_fan" typeId="readonlyswitch">
+				<label>Has Fan</label>
+				<description>If the system has a fan.</description>
+			</channel>
+			<channel id="has_leaf" typeId="readonlyswitch">
+				<label>Has Leaf</label>
+				<description>If the system is currently in a leaf mode.</description>
+			</channel>
+			<channel id="sunlight_correction_enabled" typeId="readonlyswitch">
+				<label>Sunlight Correction Enabled</label>
+				<description>If sunlight correction is enabled.</description>
+			</channel>
+			<channel id="sunlight_correction_active" typeId="readonlyswitch">
+				<label>Sunlight correction Active</label>
+				<description>If sunlight correction is active.</description>
+			</channel>
+			<channel id="using_emergency_heat" typeId="readonlyswitch">
+				<label>Using Emergency Heat</label>
+				<description>If the system is currently using emergency heat.</description>
+			</channel>
+			<channel id="locked" typeId="readonlyswitch">
+				<label>Locked</label>
+				<description>If the system currently has a locked heat/cool range</description>
+			</channel>
+			<channel id="locked_max_set_point" typeId="setpoint">
+				<label>Locked max set point</label>
+				<description>Locked max set point in celcius</description>
+			</channel>
+			<channel id="locked_min_set_point" typeId="setpoint">
+				<label>Locked Min set point</label>
+				<description>Locked min set point in celcius</description>
+			</channel>
+			<channel id="time_to_target_mins" typeId="timeToTarget">
+				<label>Time to Targer</label>
+				<description>Time to target temperature in mins (approximately).</description>
+			</channel>
 		</channels>
 
 		<properties>
@@ -73,21 +115,22 @@
 			</options>
 		</state>
 	</channel-type>
-	
-	 <channel-type id="humidity">
-        <item-type>Number</item-type>
-        <label>Humidity</label>
-        <description>Indicates the current relative humidity</description>
-        <category>Humidity</category>
-        <state pattern="%.1f" readOnly="true">
-        </state>
-    </channel-type>
-    
-     <channel-type id="timeToTarget">
-        <item-type>Number</item-type>
-        <label>Time To Target</label>
-        <description>Time left to the target temperature (mins)</description>
-        <state readOnly="true">
-        </state>
-    </channel-type>
+
+	<channel-type id="humidity">
+		<item-type>Number</item-type>
+		<label>Humidity</label>
+		<description>Indicates the current relative humidity</description>
+		<category>Humidity</category>
+		<state pattern="%.1f" readOnly="true">
+		</state>
+	</channel-type>
+
+	<channel-type id="timeToTarget">
+		<item-type>Number</item-type>
+		<label>Time To Target</label>
+		<description>Time left to the target temperature (mins)</description>
+		<state readOnly="true">
+		</state>
+	</channel-type>
 </thing:thing-descriptions>
+
