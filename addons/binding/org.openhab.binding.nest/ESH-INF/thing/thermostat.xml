@@ -13,7 +13,7 @@
 
 		<channels>
 			<channel id="temperature" typeId="temperature" />
-			<channel id="humidity" typeId="percentage" />
+			<channel id="humidity" typeId="humidity" />
 			<channel id="mode" typeId="mode" />
 			<channel id="previous_mode" typeId="mode" />
 			<channel id="max_set_point" typeId="setpoint" />
@@ -22,13 +22,13 @@
 			<channel id="can_cool" typeId="readonlyswitch" />
 			<channel id="has_fan" typeId="readonlyswitch" />
 			<channel id="has_leaf" typeId="readonlyswitch" />
-			<channel id="sunlight_correction_enabled" typeId="readonlyswitch" advanced="true" />
-			<channel id="sunlight_correction_active" typeId="readonlyswitch" advanced="true"  />
-			<channel id="using_emergency_heat" typeId="readonlyswitch" advanced="true"  />
+			<channel id="sunlight_correction_enabled" typeId="readonlyswitch" />
+			<channel id="sunlight_correction_active" typeId="readonlyswitch"  />
+			<channel id="using_emergency_heat" typeId="readonlyswitch" />
 			<channel id="locked" typeId="readonlyswitch" />
 			<channel id="locked_max_set_point" typeId="setpoint" />
 			<channel id="locked_min_set_point" typeId="setpoint" />
-			<channel id="time_to_target_mins" typeId="number" />
+			<channel id="time_to_target_mins" typeId="timeToTarget" />
 		</channels>
 
 		<properties>
@@ -73,4 +73,21 @@
 			</options>
 		</state>
 	</channel-type>
+	
+	 <channel-type id="humidity">
+        <item-type>Number</item-type>
+        <label>Humidity</label>
+        <description>Indicates the current relative humidity</description>
+        <category>Humidity</category>
+        <state pattern="%.1f" readOnly="true">
+        </state>
+    </channel-type>
+    
+     <channel-type id="timeToTarget">
+        <item-type>Number</item-type>
+        <label>Time To Target</label>
+        <description>Time left to the target temperature (mins)</description>
+        <state readOnly="true">
+        </state>
+    </channel-type>
 </thing:thing-descriptions>

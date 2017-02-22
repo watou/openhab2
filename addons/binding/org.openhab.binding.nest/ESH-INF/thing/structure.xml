@@ -12,7 +12,7 @@
 		<description>The details about the nest structures</description>
 
 		<channels>
-			<channel id="country_code" typeId="text" />
+			<channel id="country_code" typeId="country_code" />
 			<channel id="postal_code" typeId="text" />
 			<channel id="peak_period_start_time" typeId="date" />
 			<channel id="peak_period_end_time" typeId="date" />
@@ -28,6 +28,7 @@
 	</thing-type>
 
 	<channel-type id="away">
+		<item-type>String</item-type>
 		<label>Away</label>
 		<description>Away state of the structure</description>
 		<state>
@@ -38,4 +39,11 @@
 			</options>
 		</state>
 	</channel-type>
+
+	<channel-type id="country_code">
+		<item-type>String</item-type>
+		<label>Country Code</label>
+		<description>Country code of the structure</description>
+	</channel-type>
+
 </thing:thing-descriptions>

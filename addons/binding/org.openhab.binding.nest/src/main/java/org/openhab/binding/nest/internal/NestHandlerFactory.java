@@ -15,6 +15,7 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.smarthome.config.discovery.DiscoveryService;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
@@ -39,7 +40,7 @@ import com.google.common.collect.Sets;
 public class NestHandlerFactory extends BaseThingHandlerFactory {
 
     private final static Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Sets.newHashSet(THING_TYPE_THERMOSTAT,
-            THING_TYPE_CAMERA, THING_TYPE_BRIDGE);
+            THING_TYPE_CAMERA, THING_TYPE_BRIDGE, THING_TYPE_STRUCTURE);
 
     Map<ThingUID, ServiceRegistration<?>> discoveryService = new HashMap<>();
 
@@ -67,7 +68,7 @@ public class NestHandlerFactory extends BaseThingHandlerFactory {
             service.activate();
             // Register the discovery service.
             discoveryService.put(handler.getThing().getUID(), bundleContext
-                    .registerService(NestDiscoveryService.class.getName(), service, new Hashtable<String, Object>()));
+                    .registerService(DiscoveryService.class.getName(), service, new Hashtable<String, Object>()));
             return handler;
         }
 

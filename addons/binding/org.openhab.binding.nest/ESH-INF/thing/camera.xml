@@ -12,14 +12,14 @@
 		<description>Provides the nestcam layer to talk to nest</description>
 
 		<channels>
-			<channel id="audio_input_enabled" typeId="switch" />
-			<channel id="video_history_enabled" typeId="switch" />
-			<channel id="streaming" typeId="switch" />
-			<channel id="web_url" typeId="string" />
-			<channel id="app_url" typeId="string" />
-			<channel id="public_share_enabled" typeId="switch" />
-			<channel id="public_share_url" typeId="string" />
-			<channel id="snapshot_url" typeId="string" />
+			<channel id="audio_input_enabled" typeId="Switch" />
+			<channel id="video_history_enabled" typeId="Switch" />
+			<channel id="streaming" typeId="Switch" />
+			<channel id="web_url" typeId="String" />
+			<channel id="app_url" typeId="String" />
+			<channel id="public_share_enabled" typeId="Switch" />
+			<channel id="public_share_url" typeId="String" />
+			<channel id="snapshot_url" typeId="String" />
 		</channels>
 
         <properties>

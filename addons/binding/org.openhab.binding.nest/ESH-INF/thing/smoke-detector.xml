@@ -16,7 +16,7 @@
 			<channel id="battery" typeId="battery" />
 			<channel id="co_alarm_state" typeId="alarmstate" />
 			<channel id="smoke_alarm_state" typeId="alarmstate" />
-			<channel id="manual_test_active" typeId="switch" />
+			<channel id="manual_test_active" typeId="Switch" />
 		</channels>
 
         <properties>
