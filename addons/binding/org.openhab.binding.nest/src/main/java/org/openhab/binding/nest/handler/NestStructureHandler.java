@@ -36,12 +36,12 @@ public class NestStructureHandler extends BaseNestHandler {
     private Logger logger = LoggerFactory.getLogger(NestStructureHandler.class);
     private Structure lastData;
 
-    NestStructureHandler(Thing thing) {
+    public NestStructureHandler(Thing thing) {
         super(thing);
     }
 
     public void updateStructure(Structure structure) {
-        logger.debug("Updating camera " + structure.getStructureId());
+        logger.debug("Updating structure {}", structure.getStructureId());
         if (lastData == null || !lastData.equals(structure)) {
             Channel chan = getThing().getChannel(CHANNEL_RUSH_HOUR_REWARDS_ENROLLMENT);
             updateState(chan.getUID(), structure.isRushHourRewardsEnrollement() ? OnOffType.ON : OnOffType.OFF);
@@ -51,22 +51,41 @@ public class NestStructureHandler extends BaseNestHandler {
             updateState(chan.getUID(), new StringType(structure.getPostalCode()));
             chan = getThing().getChannel(CHANNEL_PEAK_PERIOD_START_TIME);
             Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-            cal.setTime(structure.getPeakPeriodStartTime());
-            updateState(chan.getUID(), new DateTimeType(cal));
-            chan = getThing().getChannel(CHANNEL_PEAK_PERIOD_START_TIME);
-            cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-            cal.setTime(structure.getPeakPeriodEndTime());
-            updateState(chan.getUID(), new DateTimeType(cal));
+            if (structure.getPeakPeriodStartTime() != null) {
+                cal.setTime(structure.getPeakPeriodStartTime());
+                updateState(chan.getUID(), new DateTimeType(cal));
+            }
+            if (structure.getPeakPeriodEndTime() != null) {
+
+                chan = getThing().getChannel(CHANNEL_PEAK_PERIOD_END_TIME);
+                cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+                cal.setTime(structure.getPeakPeriodEndTime());
+                updateState(chan.getUID(), new DateTimeType(cal));
+            }
             chan = getThing().getChannel(CHANNEL_TIME_ZONE);
             updateState(chan.getUID(), new StringType(structure.getTimeZone()));
-            chan = getThing().getChannel(CHANNEL_ETA_BEGIN);
-            cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-            cal.setTime(structure.getEtaBegin());
-            updateState(chan.getUID(), new DateTimeType(cal));
-            chan = getThing().getChannel(CHANNEL_CO_ALARM_STATE);
-            updateState(chan.getUID(), new StringType(structure.getCoAlarmState().toString()));
-            chan = getThing().getChannel(CHANNEL_SMOKE_ALARM_STATE);
-            updateState(chan.getUID(), new StringType(structure.getSmokeAlarmState().toString()));
+            if (structure.getEtaBegin() != null) {
+                chan = getThing().getChannel(CHANNEL_ETA_BEGIN);
+                if (chan == null) {
+                    logger.error("Cannot find channel {} on {}", CHANNEL_ETA_BEGIN, getThing().getLabel());
+                } else {
+                    cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+                    cal.setTime(structure.getEtaBegin());
+                    updateState(chan.getUID(), new DateTimeType(cal));
+                }
+            }
+            if (structure.getCoAlarmState() != null) {
+                chan = getThing().getChannel(CHANNEL_CO_ALARM_STATE);
+                updateState(chan.getUID(), new StringType(structure.getCoAlarmState().toString()));
+            } else {
+                logger.error("Cannot get co alarm state {} on {}", CHANNEL_CO_ALARM_STATE, getThing().getLabel());
+            }
+            if (structure.getSmokeAlarmState() != null) {
+                chan = getThing().getChannel(CHANNEL_SMOKE_ALARM_STATE);
+                updateState(chan.getUID(), new StringType(structure.getSmokeAlarmState().toString()));
+            } else {
+                logger.error("Cannot get smoke alarm state {} on {}", CHANNEL_SMOKE_ALARM_STATE, getThing().getLabel());
+            }
             chan = getThing().getChannel(CHANNEL_AWAY);
             updateState(chan.getUID(), new StringType(structure.getAway().toString()));
 

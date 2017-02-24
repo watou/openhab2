@@ -272,4 +272,16 @@ public class Camera extends BaseNestDevice {
         @SerializedName("activity_zone_ids")
         private List<String> activityZones;
     }
+
+    @Override
+    public String toString() {
+        return "Camera [isStreaming=" + isStreaming + ", isAudioInputEnabled=" + isAudioInputEnabled
+                + ", LastIsOnlineChange=" + LastIsOnlineChange + ", isVideoHistoryEnabled=" + isVideoHistoryEnabled
+                + ", webUrl=" + webUrl + ", appUrl=" + appUrl + ", isPublicShareEnabled=" + isPublicShareEnabled
+                + ", activityZones=" + activityZones + ", publicShareUrl=" + publicShareUrl + ", snapshotUrl="
+                + snapshotUrl + ", lastEvent=" + lastEvent + ", getName()=" + getName() + ", getDeviceId()="
+                + getDeviceId() + ", getLastConnection()=" + getLastConnection() + ", getNameLong()=" + getNameLong()
+                + ", getSoftwareVersion()=" + getSoftwareVersion() + ", isOnline()=" + isOnline()
+                + ", getStructureId()=" + getStructureId() + ", getWhereId()=" + getWhereId() + "]";
+    }
 }

@@ -28,7 +28,6 @@ import org.slf4j.LoggerFactory;
  * @author David Bennett - initial contribution
  */
 public class NestCameraHandler extends BaseNestHandler {
-
     private Logger logger = LoggerFactory.getLogger(NestCameraHandler.class);
     private Camera lastData;
 

@@ -17,6 +17,7 @@ import com.google.gson.annotations.SerializedName;
  *
  */
 public class SmokeDetector extends BaseNestDevice {
+
     public UiColorState getUiColorState() {
         return uiColorState;
     }
@@ -107,4 +108,14 @@ public class SmokeDetector extends BaseNestDevice {
     private boolean isManualTestActive;
     @SerializedName("ui_color_state")
     private UiColorState uiColorState;
+
+    @Override
+    public String toString() {
+        return "SmokeDetector [batteryHealth=" + batteryHealth + ", coAlarmState=" + coAlarmState + ", smokeAlarmState="
+                + smokeAlarmState + ", isManualTestActive=" + isManualTestActive + ", uiColorState=" + uiColorState
+                + ", getName()=" + getName() + ", getDeviceId()=" + getDeviceId() + ", getLastConnection()="
+                + getLastConnection() + ", getNameLong()=" + getNameLong() + ", getSoftwareVersion()="
+                + getSoftwareVersion() + ", getStructureId()=" + getStructureId() + ", isOnline()=" + isOnline()
+                + ", getWhereId()=" + getWhereId() + "]";
+    }
 }

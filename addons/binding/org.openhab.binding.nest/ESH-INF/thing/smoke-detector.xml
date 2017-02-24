@@ -4,24 +4,39 @@
 	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
 
 	<thing-type id="smoke_detector" listed="false">
-        <supported-bridge-type-refs>
-            <bridge-type-ref id="bridge" />
-        </supported-bridge-type-refs>
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="bridge" />
+		</supported-bridge-type-refs>
 
 		<label>Nest Protect</label>
 		<description>Provides the nest protect layer to talk to nest</description>
 
 		<channels>
-			<channel id="ui_color_state" typeId="uicolorstate" />
-			<channel id="battery" typeId="battery" />
-			<channel id="co_alarm_state" typeId="alarmstate" />
-			<channel id="smoke_alarm_state" typeId="alarmstate" />
-			<channel id="manual_test_active" typeId="switch" />
+			<channel id="ui_color_state" typeId="uicolorstate">
+				<label>UI Color</label>
+				<description>The current color of the ring on the smoke detector</description>
+			</channel>
+			<channel id="battery" typeId="battery">
+				<label>Battery</label>
+				<description>The state of the battery on the nest protect (if it is battery powered)</description>
+			</channel>
+			<channel id="co_alarm_state" typeId="alarmstate">
+				<label>CO alarm</label>
+				<description>The carbon monoxide alarm state of the nest protect.</description>
+			</channel>
+			<channel id="smoke_alarm_state" typeId="alarmstate">
+				<label>Smoke Alarm</label>
+				<description>The smoke alarm state of the nest protect</description>
+			</channel>
+			<channel id="manual_test_active" typeId="Switch">
+				<label>Manual Test</label>
+				<description>Manual test active at the moment</description>
+			</channel>
 		</channels>
 
-        <properties>
-            <property name="vendor">Nest</property>
-        </properties>
+		<properties>
+			<property name="vendor">Nest</property>
+		</properties>
 	</thing-type>
 
 	<channel-type id="uicolorstate">
