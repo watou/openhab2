@@ -46,9 +46,9 @@
             </channel>
 		</channels>
 
-		<properties>
-			<property name="vendor">Nest</property>
-		</properties>
+        <properties>
+            <property name="vendor">Nest</property>
+        </properties>
 	</thing-type>
 
 	<channel-type id="Switch">
