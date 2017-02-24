@@ -39,4 +39,10 @@ public class NestDevices {
     public Map<String, SmokeDetector> getSmokeDetectors() {
         return smokeDetector;
     }
+
+    @Override
+    public String toString() {
+        return "NestDevices [thermostats=" + thermostats + ", smokeDetector=" + smokeDetector + ", camera=" + camera
+                + "]";
+    }
 }

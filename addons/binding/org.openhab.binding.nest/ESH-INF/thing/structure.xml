@@ -35,8 +35,15 @@
 			<channel id="eta_begin" typeId="date">
 				<label>ETA</label>
 				<description>The estimated time of arrival for someone to get home.</description>
-
 			</channel>
+			<channel id="co_alarm_state" typeId="alarmstate" >
+                <label>CO Alarm</label>
+                <description>The Carbon monoxide alarm state for the structure.</description>
+			</channel>
+            <channel id="smoke_alarm_state" typeId="alarmstate" >
+                <label>Smoke Alarm</label>
+                <description>The Smoke alarm state for the structure.</description>
+            </channel>
 			<channel id="rush_hour_rewards_enrollment" typeId="rushHour">
 				<label>Rush Hour Rewards</label>
 				<description>If rush hour rewards is turned on or off.</description>

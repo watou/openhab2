@@ -385,4 +385,22 @@ public class Thermostat extends BaseNestDevice {
     private String timeToTarget;
     @SerializedName("where_name")
     private String whereName;
+
+    @Override
+    public String toString() {
+        return "Thermostat [canCool=" + canCool + ", canHeat=" + canHeat + ", isUsingEmergencyHeat="
+                + isUsingEmergencyHeat + ", hasFan=" + hasFan + ", fanTimerActive=" + fanTimerActive
+                + ", fanTimerTimeout=" + fanTimerTimeout + ", hasLeaf=" + hasLeaf + ", tempScale=" + tempScale
+                + ", ambientTemperature=" + ambientTemperature + ", humidity=" + humidity + ", targetTemperature="
+                + targetTemperature + ", targetTemperatureHigh=" + targetTemperatureHigh + ", targetTemperatureLow="
+                + targetTemperatureLow + ", mode=" + mode + ", previousMode=" + previousMode + ", state=" + state
+                + ", isLocked=" + isLocked + ", lockedTemperatureHigh=" + lockedTemperatureHigh
+                + ", lockedTemperatureLow=" + lockedTemperatureLow + ", sunlightCorrectionEnabled="
+                + sunlightCorrectionEnabled + ", sunlightCorrectionActive=" + sunlightCorrectionActive
+                + ", fanTimerDuration=" + fanTimerDuration + ", timeToTarget=" + timeToTarget + ", whereName="
+                + whereName + ", getName()=" + getName() + ", getDeviceId()=" + getDeviceId() + ", getLastConnection()="
+                + getLastConnection() + ", isOnline()=" + isOnline() + ", getNameLong()=" + getNameLong()
+                + ", getSoftwareVersion()=" + getSoftwareVersion() + ", getStructureId()=" + getStructureId()
+                + ", getWhereId()=" + getWhereId() + "]";
+    }
 }

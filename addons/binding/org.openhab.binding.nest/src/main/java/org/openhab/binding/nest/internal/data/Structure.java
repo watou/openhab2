@@ -195,4 +195,15 @@ public class Structure {
         autoaway,
         unknown
     }
+
+    @Override
+    public String toString() {
+        return "Structure [structureId=" + structureId + ", thermostatIds=" + thermostatIds + ", smokeAlarmIds="
+                + smokeAlarmIds + ", cameraIds=" + cameraIds + ", countryCode=" + countryCode + ", postalCode="
+                + postalCode + ", peakPeriodStartTime=" + peakPeriodStartTime + ", peakPeriodEndTime="
+                + peakPeriodEndTime + ", timeZone=" + timeZone + ", etaBegin=" + etaBegin + ", coAlarmState="
+                + coAlarmState + ", smokeAlarmState=" + smokeAlarmState + ", rushHourRewardsEnrollement="
+                + rushHourRewardsEnrollement + ", whereIds=" + whereIds + ", away=" + away + ", name=" + name + ", eta="
+                + eta + "]";
+    }
 }

@@ -37,6 +37,7 @@ import org.openhab.binding.nest.internal.NestDeviceAddedListener;
 import org.openhab.binding.nest.internal.NestUpdateRequest;
 import org.openhab.binding.nest.internal.data.Camera;
 import org.openhab.binding.nest.internal.data.NestDevices;
+import org.openhab.binding.nest.internal.data.SmokeDetector;
 import org.openhab.binding.nest.internal.data.Structure;
 import org.openhab.binding.nest.internal.data.Thermostat;
 import org.openhab.binding.nest.internal.data.TopLevelData;
@@ -142,6 +143,7 @@ public class NestBridgeHandler extends BaseBridgeHandler {
         try {
             uri = buildQueryString(config);
             String data = jsonFromGetUrl(uri, config);
+            logger.error("Data from nest {}", data);
             updateStatus(ThingStatus.ONLINE, ThingStatusDetail.NONE, "Received update from nest");
             // Now convert the incoming data into something more useful.
             GsonBuilder builder = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
@@ -164,6 +166,7 @@ public class NestBridgeHandler extends BaseBridgeHandler {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR, "Error connecting to nest");
         } catch (Exception e) {
             logger.error("Error parsing data " + uri, e);
+            updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR, "Error parsing data");
         }
 
     }
@@ -203,6 +206,18 @@ public class NestBridgeHandler extends BaseBridgeHandler {
                 for (NestDeviceAddedListener listener : listeners) {
                     logger.info("Found new camera." + camera.getDeviceId());
                     listener.onCameraAdded(camera);
+                }
+            }
+        }
+        for (SmokeDetector smokeDetector : devices.getSmokeDetectors().values()) {
+            Thing thingSmokeDetector = getDevice(smokeDetector.getDeviceId(), things);
+            if (thingSmokeDetector != null) {
+                NestSmokeDetectorHandler handler = (NestSmokeDetectorHandler) thingSmokeDetector.getHandler();
+                handler.updateSmokeDetector(smokeDetector);
+            } else {
+                for (NestDeviceAddedListener listener : listeners) {
+                    logger.info("Found new camera." + smokeDetector.getDeviceId());
+                    listener.onSmokeDetectorAdded(smokeDetector);
                 }
             }
         }

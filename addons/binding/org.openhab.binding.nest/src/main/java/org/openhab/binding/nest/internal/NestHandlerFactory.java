@@ -25,6 +25,7 @@ import org.eclipse.smarthome.core.thing.binding.ThingHandler;
 import org.openhab.binding.nest.discovery.NestDiscoveryService;
 import org.openhab.binding.nest.handler.NestBridgeHandler;
 import org.openhab.binding.nest.handler.NestCameraHandler;
+import org.openhab.binding.nest.handler.NestSmokeDetectorHandler;
 import org.openhab.binding.nest.handler.NestStructureHandler;
 import org.openhab.binding.nest.handler.NestThermostatHandler;
 import org.osgi.framework.ServiceRegistration;
@@ -41,7 +42,7 @@ import com.google.common.collect.Sets;
 public class NestHandlerFactory extends BaseThingHandlerFactory {
 
     private final static Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Sets.newHashSet(THING_TYPE_THERMOSTAT,
-            THING_TYPE_CAMERA, THING_TYPE_BRIDGE, THING_TYPE_STRUCTURE);
+            THING_TYPE_CAMERA, THING_TYPE_BRIDGE, THING_TYPE_STRUCTURE, THING_TYPE_SMOKE_DETECTOR);
 
     Map<ThingUID, ServiceRegistration<?>> discoveryService = new HashMap<>();
 
@@ -65,6 +66,10 @@ public class NestHandlerFactory extends BaseThingHandlerFactory {
 
         if (thingTypeUID.equals(THING_TYPE_STRUCTURE)) {
             return new NestStructureHandler(thing);
+        }
+
+        if (thingTypeUID.equals(THING_TYPE_SMOKE_DETECTOR)) {
+            return new NestSmokeDetectorHandler(thing);
         }
 
         if (thingTypeUID.equals(THING_TYPE_BRIDGE)) {
