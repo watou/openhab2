@@ -37,7 +37,8 @@
 			</parameter>
 			<parameter name="accessToken" type="text" groupName="nest">
 				<label>Access Token</label>
-				<description>The access token to use from nest.</description>
+				<description>The access token to use from nest.  Only need to set this value if you want to override
+				the value that is automatically retrieved from nest.  The automatic value is stored elsewhere.</description>
 				<required>false</required>
 				<advanced>true</advanced>
 			</parameter>

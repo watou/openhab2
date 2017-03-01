@@ -25,7 +25,6 @@ import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingStatus;
 import org.eclipse.smarthome.core.thing.ThingStatusDetail;
 import org.eclipse.smarthome.core.thing.binding.BaseBridgeHandler;
-import org.eclipse.smarthome.core.thing.binding.ThingHandler;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.RefreshType;
 import org.eclipse.smarthome.io.net.http.HttpUtil;
@@ -73,17 +72,26 @@ public class NestBridgeHandler extends BaseBridgeHandler {
     private List<NestUpdateRequest> nestUpdateRequests = new ArrayList<>();
     private TopLevelData lastDataQuery;
 
+    /**
+     * Creates the bridge handler to connect to nest.
+     * 
+     * @param bridge The bridge to connect to nest with.
+     */
     public NestBridgeHandler(Bridge bridge) {
         super(bridge);
     }
 
+    /**
+     * Initialize the connection to nest.
+     */
     @Override
     public void initialize() {
         logger.debug("Initialize the Nest bridge handler");
 
         NestBridgeConfiguration config = getConfigAs(NestBridgeConfiguration.class);
         startAutomaticRefresh(config.refreshInterval);
-        accessToken = new NestAccessToken(config);
+        this.accessToken = new NestAccessToken(config);
+
         logger.debug("Client Id       {}.", config.clientId);
         logger.debug("Client Secret   {}.", config.clientSecret);
         logger.debug("Pincode         {}.", config.pincode);
@@ -95,6 +103,10 @@ public class NestBridgeHandler extends BaseBridgeHandler {
         updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE, "Starting poll query");
     }
 
+    /**
+     * Do something useful when the configuration update happens. Triggers changing
+     * polling intervals as well as re-doing the access token.
+     */
     @Override
     public void handleConfigurationUpdate(Map<String, Object> configurationParameters) {
         logger.info("Config update");
@@ -106,14 +118,27 @@ public class NestBridgeHandler extends BaseBridgeHandler {
         } catch (IOException e) {
             logger.debug("Error getting Access Token.", e);
         }
+        stopAutomaticRefresh();
+        startAutomaticRefresh(getConfigAs(NestBridgeConfiguration.class).refreshInterval);
     }
 
+    /**
+     * Clean up the handler.
+     */
     @Override
     public void dispose() {
         logger.debug("Nest bridge disposed");
         stopAutomaticRefresh();
+        this.accessToken = null;
+        this.lastDataQuery = null;
+        this.pollingJob = null;
+        this.pollingRunnable = null;
+        assert (this.listeners.isEmpty());
     }
 
+    /**
+     * Handles an incoming command update
+     */
     @Override
     public void handleCommand(ChannelUID channelUID, Command command) {
         // TODO Auto-generated method stub
@@ -121,16 +146,6 @@ public class NestBridgeHandler extends BaseBridgeHandler {
             logger.debug("Refresh command received");
             refreshData();
         }
-    }
-
-    @Override
-    public void childHandlerInitialized(ThingHandler handler, Thing thing) {
-        // Called when a new thing is created.
-    }
-
-    @Override
-    public void childHandlerDisposed(ThingHandler handler, Thing thing) {
-        // Called when a thing is disposed.
     }
 
     /**
@@ -238,7 +253,6 @@ public class NestBridgeHandler extends BaseBridgeHandler {
                     listener.onStructureAdded(struct);
                 }
             }
-
         }
     }
 
@@ -279,10 +293,16 @@ public class NestBridgeHandler extends BaseBridgeHandler {
         }
     }
 
+    /**
+     * @param nestDiscoveryService The device added listener to add
+     */
     public void addDeviceAddedListener(NestDeviceAddedListener nestDiscoveryService) {
         this.listeners.add(nestDiscoveryService);
     }
 
+    /**
+     * @param nestDiscoveryService The device added listener to remove
+     */
     public void removeDeviceAddedListener(NestDiscoveryService nestDiscoveryService) {
         this.listeners.remove(nestDiscoveryService);
     }
@@ -292,6 +312,9 @@ public class NestBridgeHandler extends BaseBridgeHandler {
         nestUpdateRequests.add(request);
     }
 
+    /**
+     * Called to start the discovery scan. Forces a data refresh.
+     */
     public void startDiscoveryScan() {
         refreshData();
     }
