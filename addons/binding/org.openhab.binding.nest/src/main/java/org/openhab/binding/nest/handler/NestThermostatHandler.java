@@ -18,6 +18,7 @@ import org.eclipse.smarthome.core.thing.Channel;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingStatus;
+import org.eclipse.smarthome.core.thing.binding.BaseThingHandler;
 import org.eclipse.smarthome.core.types.Command;
 import org.openhab.binding.nest.NestBindingConstants;
 import org.openhab.binding.nest.internal.NestUpdateRequest;
@@ -31,7 +32,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author David Bennett - Initial contribution
  */
-public class NestThermostatHandler extends BaseNestHandler {
+public class NestThermostatHandler extends BaseThingHandler {
 
     private Logger logger = LoggerFactory.getLogger(NestThermostatHandler.class);
     private Thermostat lastData;
@@ -40,6 +41,10 @@ public class NestThermostatHandler extends BaseNestHandler {
         super(thing);
     }
 
+    /**
+     * Handle the command to do things to the thermostat, this will change the
+     * value of a channel by sending the request to nest.
+     */
     @Override
     public void handleCommand(ChannelUID channelUID, Command command) {
         if (channelUID.getId().equals(CHANNEL_MODE)) {
@@ -84,6 +89,9 @@ public class NestThermostatHandler extends BaseNestHandler {
         }
     }
 
+    /**
+     * Initialize the system.
+     */
     @Override
     public void initialize() {
         // TODO: Initialize the thing. If done set status to ONLINE to indicate proper working.
@@ -91,6 +99,20 @@ public class NestThermostatHandler extends BaseNestHandler {
         updateStatus(ThingStatus.ONLINE);
     }
 
+    /**
+     * Dispose the handler, cleaning up memory.
+     */
+    @Override
+    public void dispose() {
+        this.lastData = null;
+        super.dispose();
+    }
+
+    /**
+     * Handlers an incoming update from the nest system.
+     *
+     * @param thermostat The thermostat to update
+     */
     public void updateThermostat(Thermostat thermostat) {
         logger.debug("Updating thermostat " + thermostat.getDeviceId());
         if (lastData == null || !lastData.equals(thermostat)) {

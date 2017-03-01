@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2014-2017 by the respective copyright holders.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.openhab.binding.nest.handler;
 
 import static org.openhab.binding.nest.NestBindingConstants.*;
@@ -8,12 +16,18 @@ import org.eclipse.smarthome.core.thing.Channel;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingStatus;
+import org.eclipse.smarthome.core.thing.binding.BaseThingHandler;
 import org.eclipse.smarthome.core.types.Command;
 import org.openhab.binding.nest.internal.data.SmokeDetector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class NestSmokeDetectorHandler extends BaseNestHandler {
+/**
+ * The smoke detector handler, it handles the data from nest for the smoke detector.
+ *
+ * @author David Bennett - Initial Contribution
+ */
+public class NestSmokeDetectorHandler extends BaseThingHandler {
     private Logger logger = LoggerFactory.getLogger(NestCameraHandler.class);
     private SmokeDetector lastData;
 
@@ -21,12 +35,20 @@ public class NestSmokeDetectorHandler extends BaseNestHandler {
         super(thing);
     }
 
+    /**
+     * Handles any incoming command requests.
+     */
     @Override
     public void handleCommand(ChannelUID channelUID, Command command) {
-        // TODO Auto-generated method stub
+        // There is nothing to update on the smoke detector.
 
     }
 
+    /**
+     * Updates the smoke detector on data from nest.
+     *
+     * @param smokeDetector The current smoke detector state
+     */
     public void updateSmokeDetector(SmokeDetector smokeDetector) {
         logger.debug("Updating camera " + smokeDetector.getDeviceId());
         if (lastData == null || !lastData.equals(smokeDetector)) {

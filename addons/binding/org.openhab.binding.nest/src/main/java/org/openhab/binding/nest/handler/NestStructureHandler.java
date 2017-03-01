@@ -20,6 +20,7 @@ import org.eclipse.smarthome.core.thing.Channel;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingStatus;
+import org.eclipse.smarthome.core.thing.binding.BaseThingHandler;
 import org.eclipse.smarthome.core.types.Command;
 import org.openhab.binding.nest.NestBindingConstants;
 import org.openhab.binding.nest.internal.NestUpdateRequest;
@@ -32,7 +33,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author David Bennett - initial contribution
  */
-public class NestStructureHandler extends BaseNestHandler {
+public class NestStructureHandler extends BaseThingHandler {
     private Logger logger = LoggerFactory.getLogger(NestStructureHandler.class);
     private Structure lastData;
 
@@ -40,6 +41,11 @@ public class NestStructureHandler extends BaseNestHandler {
         super(thing);
     }
 
+    /**
+     * Update the structure from the data we received from nest.
+     *
+     * @param structure The structure data to update with
+     */
     public void updateStructure(Structure structure) {
         logger.debug("Updating structure {}", structure.getStructureId());
         if (lastData == null || !lastData.equals(structure)) {
@@ -98,6 +104,13 @@ public class NestStructureHandler extends BaseNestHandler {
         }
     }
 
+    /**
+     * Handles updating the details on this structure by sending the request all the way
+     * to nest.
+     *
+     * @param channelUID the channel to update
+     * @param command the command to apply
+     */
     @Override
     public void handleCommand(ChannelUID channelUID, Command command) {
         if (channelUID.getId().equals(CHANNEL_AWAY)) {
@@ -111,7 +124,9 @@ public class NestStructureHandler extends BaseNestHandler {
 
     }
 
-    /** Creates the url to set a specific value on the thermostat. */
+    /**
+     * Creates the url to set a specific value on the thermostat.
+     */
     private void addUpdateRequest(String field, Object value) {
         String structId = getThing().getProperties().get(NestBindingConstants.PROPERTY_ID);
         StringBuilder builder = new StringBuilder().append(NestBindingConstants.NEST_STRUCTURE_UPDATE_URL)

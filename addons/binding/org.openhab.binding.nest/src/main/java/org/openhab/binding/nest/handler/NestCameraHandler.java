@@ -16,6 +16,7 @@ import org.eclipse.smarthome.core.thing.Channel;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingStatus;
+import org.eclipse.smarthome.core.thing.binding.BaseThingHandler;
 import org.eclipse.smarthome.core.types.Command;
 import org.openhab.binding.nest.internal.data.Camera;
 import org.slf4j.Logger;
@@ -27,7 +28,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author David Bennett - initial contribution
  */
-public class NestCameraHandler extends BaseNestHandler {
+public class NestCameraHandler extends BaseThingHandler {
     private Logger logger = LoggerFactory.getLogger(NestCameraHandler.class);
     private Camera lastData;
 
@@ -39,6 +40,11 @@ public class NestCameraHandler extends BaseNestHandler {
     public void handleCommand(ChannelUID channelUID, Command command) {
     }
 
+    /**
+     * Updates the camera with data from nest.
+     *
+     * @param camera The new camera data
+     */
     public void updateCamera(Camera camera) {
         logger.debug("Updating camera " + camera.getDeviceId());
         if (lastData == null || !lastData.equals(camera)) {

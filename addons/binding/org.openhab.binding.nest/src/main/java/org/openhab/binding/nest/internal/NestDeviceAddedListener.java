@@ -20,11 +20,23 @@ import org.openhab.binding.nest.internal.data.Thermostat;
  */
 public interface NestDeviceAddedListener {
 
+    /**
+     * Called when a thermostat is discovered.
+     */
     public void onThermostatAdded(Thermostat thermostat);
 
+    /**
+     * Called when a camera is discovered.
+     */
     public void onCameraAdded(Camera thermostat);
 
+    /**
+     * Called when a smoke detector is discovered.
+     */
     public void onSmokeDetectorAdded(SmokeDetector thermostat);
 
+    /**
+     * Called when a structure is discovered.
+     */
     public void onStructureAdded(Structure struct);
 }

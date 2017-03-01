@@ -46,11 +46,18 @@ public class NestHandlerFactory extends BaseThingHandlerFactory {
 
     Map<ThingUID, ServiceRegistration<?>> discoveryService = new HashMap<>();
 
+    /**
+     * The things this factory supports creating.
+     */
     @Override
     public boolean supportsThingType(ThingTypeUID thingTypeUID) {
         return SUPPORTED_THING_TYPES_UIDS.contains(thingTypeUID);
     }
 
+    /**
+     * Creates a handler for the specific thing. THis also creates the discovery service
+     * when the bridge is created.
+     */
     @Override
     protected ThingHandler createHandler(Thing thing) {
 
@@ -85,6 +92,10 @@ public class NestHandlerFactory extends BaseThingHandlerFactory {
         return null;
     }
 
+    /**
+     * Removes the handler for the specific thing. This also handles disableing the discovery
+     * service when the bridge is removed.
+     */
     @Override
     protected void removeHandler(ThingHandler thingHandler) {
         if (thingHandler instanceof NestBridgeHandler) {
@@ -97,5 +108,6 @@ public class NestHandlerFactory extends BaseThingHandlerFactory {
                 discoveryService.remove(thingHandler.getThing().getUID());
             }
         }
+        super.removeHandler(thingHandler);
     }
 }
