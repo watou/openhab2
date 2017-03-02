@@ -24,3 +24,7 @@ from the previous steps.  The client_id, client_secret and pincode.  There is al
 1. The binding initiates outbound TCP connections to the Nest infrastructure on port 9553 (however, which outbound ports are used is determined dynamically by the Nest cloud service and may be different from 9553). If the log shows "Connection timed out" or "Exception reading from Nest: Could not get data model", ensure that outbound connections are not being blocked by a firewall.
 2. The Nest API rounds humidity to 5%, degrees Fahrenheit to whole degrees, and degrees Celsius to 0.5 degrees, so your Nest app will likely show slightly different values from what is available from the API.
 3. The binding only uses celsius for all it's temperature numbers.
+
+## Attribution
+
+This doc is written by John Cocula and copied from the 1.0 binding for nest.

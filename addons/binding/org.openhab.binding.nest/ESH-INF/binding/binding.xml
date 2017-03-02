@@ -7,6 +7,5 @@
     <name>Nest Binding</name>
     <description>Nest connects to the nest cloud and allows control of the various nest devices.  Create a bridge thing
     to setup the connection to nest.</description>
-    <author>David Bennett</author>
     
 </binding:binding>
